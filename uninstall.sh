@@ -18,16 +18,16 @@ then
 fi
 
 # Check if exits
-[ -d $DEFAULT_DIR ] && echo "...\t\t Identificando arquivo padrao em $DEFAULT_DIR";
+[ -d $DEFAULT_DIR ] && echo -ne "...\t\t Identificando arquivo padrao em $DEFAULT_DIR";
 
-rm -rfv /lib/active_rules.sh
-[ "$?" == "0" ] && echo "[OK]\t...\t Deletado script /lib/active_rules.sh";
+rm -rfv /usr/local/pkg/suricata/active_rules.sh
+[ "$?" == "0" ] && echo -ne "[OK]\t...\t Deletado script /usr/local/pkg/suricata/active_rules.sh";
 
-mv -v "backup/suricata_rules.php" "$DEFAULT_DIR/suricata/suricata_rules.php" && echo "\t...\t Restaurando arquivo php ao original"
+mv -v "backup/suricata_rules.php" "$DEFAULT_DIR/suricata/suricata_rules.php" && echo -ne "\t...\t Restaurando arquivo php ao original"
 
 if [ "$?" == "0" ]
 then
   echo "[OK] REMOCAO BEM SUCEDIDA"
 else
-  echo "[ER] BACKUP NAO ENCONTRADO. VERIFIQUE A VERSAO DO SEU SURICATA E BAIXE DIRETAMENTE\n → https://raw.githubusercontent.com/pfsense/FreeBSD-ports/devel/security/pfSense-pkg-suricata/files/usr/local/www/suricata/suricata_rules.php"
+  echo -ne "[ER] BACKUP NAO ENCONTRADO. VERIFIQUE A VERSAO DO SEU SURICATA E BAIXE DIRETAMENTE\n → https://raw.githubusercontent.com/pfsense/FreeBSD-ports/devel/security/pfSense-pkg-suricata/files/usr/local/www/suricata/suricata_rules.php"
 fi
