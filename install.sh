@@ -18,12 +18,12 @@ then
 fi
 
 # Check if exits
-[ -d $DEFAULT_DIR ] && echo "...\t\t Identificando arquivo padrao em $DEFAULT_DIR";
+[ -d $DEFAULT_DIR ] && echo -ne "...\t\t Identificando arquivo padrao em $DEFAULT_DIR";
 
 mv -v lib/active_rules.sh /usr/local/pkg/suricata/active_rules.sh
-[ "$?" == "0" ] && echo "[OK]\t...\t Script de alteracao: /lib/active_rules.sh";
+[ "$?" == "0" ] && echo -ne "[OK]\t...\t Script de alteracao: /lib/active_rules.sh";
 
-mv -v "$DEFAULT_DIR/suricata/suricata_rules.php" "backup/" && echo "\t...\t backup de antiga pagina para backup/"
+mv -v "$DEFAULT_DIR/suricata/suricata_rules.php" "backup/" && echo -ne "\t...\t backup de antiga pagina para backup/"
 curl -o "$DEFAULT_DIR/suricata/suricata_rules.php" "https://raw.githubusercontent.com/julioliraup/FreeBSD-ports/devel/security/pfSense-pkg-suricata/files/usr/local/www/suricata/suricata_rules.php" --progress-bar
 
 if [ "$?" == "0" ]
