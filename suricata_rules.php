@@ -377,7 +377,7 @@ elseif (isset($_POST['all_drop'])){
 }
 elseif (isset($_POST['all_alert'])){
         if (isset($_POST['sids'])) {
-                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ." --alert");
+                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ."' --alert");
         }
         else {
                 shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '' --alert");
