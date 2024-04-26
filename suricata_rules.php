@@ -369,18 +369,18 @@ if (isset($_POST['rule_state_save']) && isset($_POST['ruleStateOptions']) && is_
 
 elseif (isset($_POST['all_drop'])){
         if (isset($_POST['sids'])) {
-                shell_exec("bash /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ."'");
+                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ."'");
         }
         else {
-                shell_exec("bash /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules'");
+                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules'");
         }
 }
 elseif (isset($_POST['all_alert'])){
         if (isset($_POST['sids'])) {
-                shell_exec("bash /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ." --alert");
+                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '". $_POST['sids'] ." --alert");
         }
         else {
-                shell_exec("bash /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '' --alert");
+                shell_exec("sh /usr/local/pkg/suricata/active_rules.sh '/usr/local/share/suricata/rules' '' --alert");
         }
 
 }
