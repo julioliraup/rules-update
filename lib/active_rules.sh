@@ -7,8 +7,8 @@ _make_regex(){
   if [ -z "$sid_bruto" ]; then
     str_component=""
   else
-    str_all=$(echo "$sid_bruto" | awk '{for(i=1;i<=NF;i++) printf "sid:"$i"|" }' | sed 's/.$//')
-    str_component="/$str_all/!"
+    str_all=$(echo "$sid_bruto" | awk '{for(i=1;i<=NF;i++) printf $i"|" }' | sed 's/.$//')
+    str_component="/sid:($str_all)/!"
   fi
   echo "$str_component"
 }
@@ -27,8 +27,8 @@ if [ "$1" = "--help" ]; then
 fi
 
 if [ "$3" = "--alert" ]; then
-  sed -i '' "$( _make_regex ) s/drop/alert/g" "$rules_dir"/*.rules
+  grep -l 'drop' "$rules_dir"/*.rules | xargs -I@ sed -Ei '' "$(_make_regex) s/drop/alert/g" @
 else
-  sed -i '' "$( _make_regex ) s/alert/drop/g" "$rules_dir"/*.rules
+  grep -l 'alert' "$rules_dir"/*.rules | xargs -I@ sed -Ei '' "$(_make_regex) s/alert/drop/g" @
 fi
 
