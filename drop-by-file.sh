@@ -3,9 +3,9 @@
 logfile=""
 
 _reader_log(){
-	ids="$(cat $logfile | awk '{print $3}' | cut -d: -f2)"
+	ids="$(cat $logfile | cut -d: -f2)"
 
-	unique_ids="$(echo "$ids" | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/\[\*\*\]//g')"
+	unique_ids="$(echo "$ids" | sort -u | tr '\n' ' ')"
 	#unique_ids="$(echo "$ids" | tr ' ' '\n' | sort -u | sed 's/^/1:/')"
 
 	printf "$unique_ids"
