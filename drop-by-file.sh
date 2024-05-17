@@ -24,7 +24,8 @@ _make_regex(){
 
 if [ "$1" == "" ];
 then
-  logfile="/var/log/suricata/suricata_*/alerts.log"
+	printf "Uso: $0 <log-file(s)> <rules-file(s)>"
+	exit 0
 else
 	if [ "$1" == "--help" ]
 	then
