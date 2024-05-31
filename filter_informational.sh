@@ -11,4 +11,4 @@ else
   logfile="$1"
 fi
 
-grep -E '(former_category (INFO|POLICY)|( INFO | POLICY ))' $logfile | grep -o 'sid:[0-9]*;' | sed 's/sid:/1:/;s/;//'
+grep -E '(former_category (INFO|POLICY)|(signature_severity Informational|ET INAPPROPRIATE |ET GAMES |ET CHAT ))' $logfile | grep -o 'sid:[0-9]*;' | sed 's/sid:/1:/;s/;//'
